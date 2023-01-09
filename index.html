@@ -11,24 +11,24 @@
 </head>
 <body>
   
-  <h1 class="heading">Knowing Europe</h1>
+  <h1 class="heading">Knowing<span id="europe">Europe</span></h1>
 
   <div class="game-area">
     <h2 class="question">Question goes here</h2>
     <div class="picture-box">Picture goes here</div>
     <div class="options-area">
-      <button id="option1">Option1</button>
-      <button id="option2">Option2</button>
-      <button id="option3">Option3</button>
+      <button class="btn" id="option1">Option1</button>
+      <button class="btn" id="option2">Option2</button>
+      <button class="btn" id="option3">Option3</button>
     </div>
-    <div class="answer-area">
-
+    <div class="answer-area" id="answer">
+      This is where you will know if you were right or wrong
     </div>
-    <div class="statistics-area">
-      <p>Score <span id="score">0</span></p>
-      <p>Played Games <span id="played-games">0</span></p>
-      <p>Win % <span id="win-percent">0</span></p>
-    </div>
+  </div>
+  <div class="statistics-area">
+    <p><span id="score">0</span><br>Score</p>
+    <p><span id="played-games">0</span><br>Games</p>
+    <p><span id="win-percent">0</span><br>Win %</p>
   </div>
 
   <footer></footer>

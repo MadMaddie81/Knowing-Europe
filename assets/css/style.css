@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiko&family=Italianno&family=Libre+Baskerville&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    background-color: rgb(78, 81, 90);
+}
+
+.heading {
+    font-family: 'Libre Baskerville', serif;
+    box-sizing: border-box;
+    max-width: 70vw;
+    margin-left: 15vw;
+    margin-top: 3vh;
+    padding: 0 5%;
+    background-color: rgb(255, 237, 215);
+    font-size: 300%;
+}
+
+#europe {
+    font-family: Italianno, cursive;
+    font-size: 200%;
+    color: midnightblue;
+}
+
+.game-area {
+    max-width: 70vw;
+    margin-left: 15vw;
+    background-color: rgb(222, 224, 231);
+    box-sizing: border-box;
+    border: 7px rgb(70, 70, 70) double;
+}
+
+.question {
+    text-align: center;
+    font-family: Amiko, sans-serif;
+    font-size: 200%;
+    margin: 15px 0 15px;
+}
+
+.picture-box {
+    max-width: 60%;
+    margin: 0 auto;
+    background-color: white;
+    min-height: 30vh;
+}
+
+.picture {
+    max-height: 40vh;
+    max-width: 60%;
+}
+
+.options-area {
+    max-width: 70%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    font-family: Amiko, sans-serif;
+    font-size: 100%;
+    width: 130px;
+    min-height: 70px;
+    padding: 8px;
+    border: 3px outset rgb(255, 201, 136);
+    background-color: rgb(255, 237, 215);
+}
+
+.btn:hover {
+    font-weight: bolder;
+    color: midnightblue;
+    font-size: 105%;
+}
+
+.answer-area {
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    min-height: 30px;
+    vertical-align: middle;
+    font-family: Amiko, sans-serif;
+    font-weight: bold;
+}
+
+.statistics-area {
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    max-width: 70vw;
+    margin-left: 15vw;
+    background-color: rgb(255, 237, 215);
+    font-family: Amiko, sans-serif;
+    font-weight: bold;
+}
+
+.statistics-area > p {
+    text-align: center;
+    margin: 15px auto;
+}
