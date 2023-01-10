@@ -67,7 +67,7 @@ body {
 }
 
 .game-area {
-    max-width: 70vw;
+    width: 70vw;
     margin: 0 15vw;
     background-color: rgb(222, 224, 231);
     box-sizing: border-box;
@@ -134,8 +134,8 @@ body {
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
-    max-width: 70vw;
-    margin-left: 15vw;
+    width: 70vw;
+    margin: 0 15vw;
     background-color: rgb(255, 237, 215);
     font-family: Amiko, sans-serif;
     font-weight: bold;
@@ -146,10 +146,26 @@ body {
     margin: 15px auto;
 }
 
+.footer {
+    height: 100px;
+    background-color: rgb(33, 35, 41);
+    margin-top: 3vh;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.footer > p, footer > p > a {
+    margin-bottom: 3px;
+    font-family: Amiko, sans-serif;
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: rgb(222, 224, 231);
+}
+
 @media screen and (max-width: 1050px) {
 
     .heading {
-        max-width: 80vw;
+        width: 80vw;
         margin: 1vh 10vw 0;
         padding: 0 1%;
     }
@@ -180,7 +196,37 @@ body {
     }
 
     .picture-box {
-        max-width: 90%;
+        width: 90%;
         min-height: 20vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .heading {
+        width: 90vw;
+        margin: 0.5vh 5vw 0;
+        padding: 0 1%;
+    }
+    .title {
+        font-size: 200%;
+    }
+    .game-area {
+        width: 90vw;
+        margin: 0 5vw;
+    }
+    .options-area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .btn {
+        margin: 5px auto;
+        min-height: 60px;
+    }
+
+    .statistics-area {
+        width: 90vw;
+        margin: 0 5vw;
     }
 }
