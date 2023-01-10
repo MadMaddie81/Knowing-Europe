@@ -11,13 +11,18 @@ body {
 }
 
 .heading {
-    font-family: 'Libre Baskerville', serif;
     box-sizing: border-box;
-    max-width: 70vw;
-    margin-left: 15vw;
-    margin-top: 3vh;
+    display: inline-block;
+    width: 70vw;
+    margin: 3vh 15vw 0;
     padding: 0 5%;
     background-color: rgb(255, 237, 215);
+    
+}
+
+.title {
+    float: left;
+    font-family: 'Libre Baskerville', serif;
     font-size: 300%;
 }
 
@@ -25,6 +30,37 @@ body {
     font-family: Italianno, cursive;
     font-size: 200%;
     color: midnightblue;
+}
+
+.game-mode{
+    float: right;
+    text-align: center;
+    margin-top: 2%;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 110%;
+    color: midnightblue
+}
+
+.game-mode-button {
+    margin: 3px 8px 8px 8px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 50%;
+    font-weight: 700;
+    background: rgb(255, 222, 182);
+    border: 3px solid rgb(255, 201, 136);
+}
+
+.icon {
+    font-size: 400%;
+    margin-bottom: 3px;
+}
+
+.game-mode-button:hover {
+    background-color: rgb(255, 201, 136);
+    border: 3px solid rgb(163, 111, 47);
 }
 
 .game-area {
