@@ -94,11 +94,12 @@ body {
     max-height: 40vh;
     max-width: 100%;
     margin: 0 auto;
+    box-shadow: 5px 5px 10px rgb(78, 81, 90);
 }
 
 .options-area {
     max-width: 70%;
-    margin: 15px auto;
+    margin: 20px auto;
     display: flex;
     justify-content: space-around;
 }
