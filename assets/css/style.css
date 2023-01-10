@@ -8,6 +8,9 @@
 
 body {
     background-color: rgb(78, 81, 90);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .heading {
@@ -65,7 +68,7 @@ body {
 
 .game-area {
     max-width: 70vw;
-    margin-left: 15vw;
+    margin: 0 15vw;
     background-color: rgb(222, 224, 231);
     box-sizing: border-box;
     border: 7px rgb(70, 70, 70) double;
@@ -79,15 +82,18 @@ body {
 }
 
 .picture-box {
-    max-width: 60%;
+    max-width: 80%;
     margin: 0 auto;
-    background-color: white;
-    min-height: 30vh;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .picture {
     max-height: 40vh;
-    max-width: 60%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .options-area {
@@ -138,4 +144,43 @@ body {
 .statistics-area > p {
     text-align: center;
     margin: 15px auto;
+}
+
+@media screen and (max-width: 1050px) {
+
+    .heading {
+        max-width: 80vw;
+        margin: 1vh 10vw 0;
+        padding: 0 1%;
+    }
+
+    .title {
+        clear: both;
+        float: none;
+        text-align: center;
+
+    }
+    .game-mode {
+        clear: both;
+        float: none;
+    }
+
+    .game-area {
+        width: 80vw;
+        margin: 0 10vw;
+    }
+
+    .options-area {
+        max-width: 100%;
+    }
+
+    .statistics-area {
+        width: 80vw;
+        margin: 0 10vw;
+    }
+
+    .picture-box {
+        max-width: 90%;
+        min-height: 20vh;
+    }
 }
