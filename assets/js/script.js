@@ -342,3 +342,22 @@ let countries = [
         photo: '<img src="assets/images/capitols/cardiff.jpg" alt="Cardiff" class="picture">'
     },
 ]
+
+//document.getElementById('picture').innerHTML = countries[56].flag;
+
+// Wait for the page to load before running the game, then add event listeners to the buttons
+
+document.addEventListener("DOMContentLoaded", function() {
+    let buttons = document.getElementsByTagName('button');
+
+    for (let button of buttons) {
+        button.addEventListener('click', function() {
+            if (this.getAttribute('data-type') === 'answer') {
+                checkAnswer();
+            } else {
+                let gameType = this.getAttribute('data-type');
+                startGame(gameType);
+            }
+        })
+    }
+})

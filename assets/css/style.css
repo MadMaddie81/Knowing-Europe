@@ -63,7 +63,7 @@ body {
 
 .game-mode-button:hover {
     background-color: rgb(255, 201, 136);
-    border: 3px solid rgb(163, 111, 47);
+    border: 3px solid rgb(201, 131, 47);
 }
 
 .game-area {
