@@ -354,9 +354,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let button of buttons) {
         button.addEventListener('click', function() {
             if (this.getAttribute('data-type') === 'answer') {
-                checkAnswer();
-            } else if(this.getAttribute('data-type') === 'startFlags') {
-                runFlags();
+                alert("this function isn't ready yet");
             } else {
                 let gameType = this.getAttribute('data-type');
                 gameStartup(gameType);
@@ -369,20 +367,69 @@ document.addEventListener("DOMContentLoaded", function() {
  * Resets scores and explains the game chosen
  */
 function gameStartup(gameType) {
+
+    document.getElementById('question').textContent = "Let's see how well you know the European countries";
     document.getElementById('score').innerHTML = '0';
     document.getElementById('played-games').innerHTML = '0';
     document.getElementById('win-percent').innerHTML = '0';
 
     if (gameType === 'flags') {
-        document.getElementById('game-choice').innerHTML = `
+        document.getElementById('picture').innerHTML = `
         <h2>Ok, let's test your flag knowledge</h2>
         <p>You will be presented with a flag and three options.</p>
         <p>Guess which country the flag belongs to.</p>
         <p>We play 10 rounds</p>
-        <button class="start-button" data-type="startFlags">START GAME</button>
-        `
+        <button class="start-button" id="start-flags">START GAME</button>
+        `;
+        let start = document.getElementById('start-flags');
+        start.addEventListener('click', function() {runFlags()});
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
     }
+}
+
+/**
+ * The flag game loop that keep running until player runs out of game rounds.
+ */
+function runFlags() {
+
+    document.getElementById('question').textContent = "What flag is this?";
+
+    let number = Math.floor(Math.random() * 57);
+    let country = countries[number];
+
+    let optionNumbers = randomiseOptions(number);
+    
+    let optionPlacing = Math.floor(Math.random() * 3);
+    optionNumbers.splice(optionPlacing, 0, number);
+
+    let op1 = optionNumbers[0];
+    let op2 = optionNumbers[1];
+    let op3 = optionNumbers[2];
+
+    document.getElementById('picture').innerHTML = country.flag;
+
+
+    document.getElementById('option1').textContent = countries[op1].country;
+    document.getElementById('option2').textContent = countries[op2].country;
+    document.getElementById('option3').textContent = countries[op3].country;
+
+}
+
+/**
+ * Randomises the wrong options.
+ * 
+ * Returns two random numbers between 0 - 56
+ */
+function randomiseOptions(number) {
+    let num1;
+    let num2;
+
+    do {
+        num1 = Math.floor(Math.random() * 57);
+        num2 = Math.floor(Math.random() * 57);
+    } while (num1 === num2 || num1 === number || num2 === number);
+
+    return [num1, num2];
 }

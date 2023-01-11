@@ -85,17 +85,18 @@ body {
     max-width: 80%;
     margin: 0 auto;
     min-height: 40vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.game-choice {
-    width: 100%;
-    height: 100%;
     text-align: center;
     font-family: Amiko, sans-serif;
     font-weight: bold;
+    font-size: 140%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.game-choice > h2 {
+    font-size: 40px;
 }
 
 .game-choice > p {
@@ -105,7 +106,7 @@ body {
 .big-button {
     width: 200px;
     height: 200px;
-    font-size: 150%;
+    font-size: 120%;
     margin: 30px;
     background: rgb(255, 222, 182);
     border: 7px solid rgb(255, 201, 136);
@@ -130,7 +131,7 @@ body {
     border: 7px solid rgb(255, 201, 136);
     border-radius: 20px;
     font-family: Amiko, sans-serif;
-    font-size: 150%;
+    font-size: 25px;
     font-weight: 700;
     margin-top: 30px;
 }
@@ -138,7 +139,7 @@ body {
 .start-button:hover {
     background-color: rgb(255, 201, 136);
     border: 7px solid rgb(201, 131, 47);
-    font-size: 160%;
+    font-size: 120%;
     color: midnightblue;
 }
 
