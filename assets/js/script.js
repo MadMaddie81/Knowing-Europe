@@ -348,6 +348,7 @@ let countries = [
 // Wait for the page to load before running the game, then add event listeners to the buttons
 
 document.addEventListener("DOMContentLoaded", function() {
+
     let buttons = document.getElementsByTagName('button');
 
     for (let button of buttons) {

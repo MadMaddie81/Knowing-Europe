@@ -20,8 +20,14 @@
   </header>
   
   <div class="game-area">
-    <h2 class="question">Let's see how well you know the European countries!</h2>
-    <div class="picture-box" id="picture"></div>
+    <h2 class="question" id="question">Let's see how well you know the European countries!</h2>
+    <div class="picture-box" id="picture">
+      <div class="game-choice">
+        <h2>Which game would you like to play?</h2>
+        <button class="big-button" data-type="flags"><i class="fa-regular fa-flag big-icon"></i><br>FLAGS</button>
+        <button class="big-button" data-type="capitols"><i class="fa-solid fa-city big-icon"></i><br>CAPITOLS</button>
+      </div>
+    </div>
     <div class="options-area">
       <button data-type="answer" class="btn" id="option1"></button>
       <button data-type="answer" class="btn" id="option2"></button>
