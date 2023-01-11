@@ -377,11 +377,13 @@ function gameStartup(gameType) {
 
     if (gameType === 'flags') {
         document.getElementById('picture').innerHTML = `
-        <h2>Ok, let's test your flag knowledge</h2>
-        <p>You will be presented with a flag and three options.</p>
-        <p>Guess which country the flag belongs to.</p>
-        <p>We play 10 rounds</p>
-        <button class="start-button" id="start-flags">START GAME</button>
+        <div class="flag-box">
+          <h2>Ok, let's test your flag knowledge</h2>
+          <p>You will be presented with a flag and three options.</p>
+          <p>Guess which country the flag belongs to.</p>
+          <p>We play 10 rounds</p>
+          <button class="start-button" id="start-flags">START GAME</button>
+        </div>
         `;
         let start = document.getElementById('start-flags');
         start.addEventListener('click', function() {runFlags()});

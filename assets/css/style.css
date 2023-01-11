@@ -97,11 +97,23 @@ body {
     flex-wrap: wrap;
 }
 
+.flag-box {
+    display: flex;
+    flex-flow: column nowrap;
+    font-family: Amiko, sans-serif;
+    font-weight: bold;
+    font-size: 110%;
+}
+
 .game-choice > h2 {
     font-size: 40px;
 }
 
-.game-choice > p {
+.flag-box > h2 {
+    font-size: 40px;
+}
+
+.flag-box > p {
     margin: 15px auto 0;
 }
 
@@ -137,7 +149,7 @@ body {
     font-size: 25px;
     font-weight: 700;
     color: black;
-    margin: 30px 10vw 0;
+    margin: 20px auto 0;
     
 }
 
@@ -226,6 +238,9 @@ body {
 
 .footer {
     height: 70px;
+    position: relative;
+    bottom: 0;
+    left: 0;
     background-color: rgb(33, 35, 41);
     margin-top: 3vh;
     text-align: center;
@@ -268,6 +283,22 @@ body {
         max-width: 100%;
     }
 
+    .question {
+        font-size: 170%;
+    }
+
+    .game-choice > h2 {
+        font-size: 120%;
+    }
+
+    .flag-box > h2 {
+        font-size: 110%;
+    }
+
+    .flag-box > p {
+        font-size: 70%;
+    }
+
     .statistics-area {
         width: 80vw;
         margin: 0 10vw;
@@ -285,13 +316,16 @@ body {
         margin: 0.5vh 5vw 0;
         padding: 0 1%;
     }
+
     .title {
         font-size: 200%;
     }
+
     .game-area {
         width: 90vw;
         margin: 0 5vw;
     }
+
     .options-area {
         display: flex;
         flex-direction: column;
