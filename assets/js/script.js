@@ -1,3 +1,9 @@
+/**
+ * This script starts with a big array of countries that are used to play the game.
+ * 
+ * The actual game code starts at line 354
+ */
+
 let countries = [
     {
         country: 'Åland',
@@ -341,9 +347,7 @@ let countries = [
         flag: '<img src="assets/images/flags/Flag_of_Wales.svg.png" alt="Flag of Wales" class="picture">',
         photo: '<img src="assets/images/capitols/cardiff.jpg" alt="Cardiff" class="picture">'
     },
-]
-
-//document.getElementById('picture').innerHTML = countries[56].flag;
+];
 
 // Wait for the page to load before running the game, then add event listeners to the buttons
 
@@ -353,12 +357,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for (let button of buttons) {
         button.addEventListener('click', function() {
-            if (this.getAttribute('data-type') === 'answer') {
-                alert("this function isn't ready yet");
-            } else {
-                let gameType = this.getAttribute('data-type');
-                gameStartup(gameType);
-            }
+            let gameType = this.getAttribute('data-type');
+            gameStartup(gameType);
         })
     }
 })
@@ -395,6 +395,11 @@ function gameStartup(gameType) {
 function runFlags() {
 
     document.getElementById('question').textContent = "What flag is this?";
+    document.getElementsByClassName('options-area')[0].innerHTML = `
+      <button data-type="answer" class="btn" id="option1"></button>
+      <button data-type="answer" class="btn" id="option2"></button>
+      <button data-type="answer" class="btn" id="option3"></button>
+    `
 
     let number = Math.floor(Math.random() * 57);
     let country = countries[number];
@@ -418,9 +423,12 @@ function runFlags() {
 }
 
 /**
- * Randomises the wrong options.
+ * Takes in the array number of the current question
  * 
- * Returns two random numbers between 0 - 56
+ * Randomises 2 numbers and compare them to each other
+ * and the question to avoid duplication
+ * 
+ * Returns the two random numbers
  */
 function randomiseOptions(number) {
     let num1;
