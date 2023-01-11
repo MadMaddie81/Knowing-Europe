@@ -86,7 +86,7 @@ body {
 .picture-box {
     max-width: 80%;
     margin: 0 auto;
-    min-height: 40vh;
+    height: 40vh;
     text-align: center;
     font-family: Amiko, sans-serif;
     font-weight: bold;
@@ -188,6 +188,24 @@ body {
     vertical-align: middle;
     font-family: Amiko, sans-serif;
     font-weight: bold;
+}
+
+.green {
+    background-color: lightgreen;
+    border-color: green;
+}
+
+.red {
+    background-color: lightcoral;
+    border-color: red;
+}
+
+.correct {
+    color: darkgreen;
+}
+
+.incorrect {
+    color: darkred;
 }
 
 .statistics-area {

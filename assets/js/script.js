@@ -369,6 +369,8 @@ document.addEventListener("DOMContentLoaded", function() {
 function gameStartup(gameType) {
 
     document.getElementById('question').textContent = "";
+    document.getElementById('answer').textContent = "";
+    document.getElementsByClassName('options-area')[0].innerHTML = "";
     document.getElementById('score').innerHTML = '0';
     document.getElementById('played-games').innerHTML = '0';
     document.getElementById('win-percent').innerHTML = '0';
@@ -395,11 +397,13 @@ function gameStartup(gameType) {
 function runFlags() {
 
     document.getElementById('question').textContent = "What flag is this?";
+    
     document.getElementsByClassName('options-area')[0].innerHTML = `
       <button data-type="answer" class="btn" id="option1"></button>
       <button data-type="answer" class="btn" id="option2"></button>
       <button data-type="answer" class="btn" id="option3"></button>
     `
+    
 
     let number = Math.floor(Math.random() * 57);
     let country = countries[number];
@@ -419,6 +423,15 @@ function runFlags() {
     document.getElementById('option1').textContent = countries[op1].country;
     document.getElementById('option2').textContent = countries[op2].country;
     document.getElementById('option3').textContent = countries[op3].country;
+
+    let buttons = document.getElementsByClassName('btn');
+    for (button of buttons) {
+        button.addEventListener('click', function() {
+            let answer = this.textContent;
+            let button = this.classList;
+            checkAnswer(number, answer, button);
+        })
+    }
 
 }
 
@@ -440,4 +453,30 @@ function randomiseOptions(number) {
     } while (num1 === num2 || num1 === number || num2 === number);
 
     return [num1, num2];
+}
+
+/**
+ * Comparing the clicked button with the correct answer.
+ * 
+ * Takes in the array number of the correct answer, the text content and class list of the button pressed.
+ */
+function checkAnswer(number, answer, button) {
+    let correct = countries[number].country;
+    let message = document.getElementById('answer');
+
+    if (answer === correct) {
+        message.classList.add("correct");
+        message.classList.remove("incorrect");
+        message.textContent = "That is correct!";
+        button.add("green")
+        button.remove("red");
+    } else {
+        message.classList.add("incorrect");
+        message.classList.remove("correct");
+        message.textContent = `That is wrong. This is the flag of ${correct}.`;
+        button.add("red");
+        button.remove("green");
+    }
+
+
 }
