@@ -355,10 +355,34 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener('click', function() {
             if (this.getAttribute('data-type') === 'answer') {
                 checkAnswer();
+            } else if(this.getAttribute('data-type') === 'startFlags') {
+                runFlags();
             } else {
                 let gameType = this.getAttribute('data-type');
-                startGame(gameType);
+                gameStartup(gameType);
             }
         })
     }
 })
+
+/**
+ * Resets scores and explains the game chosen
+ */
+function gameStartup(gameType) {
+    document.getElementById('score').innerHTML = '0';
+    document.getElementById('played-games').innerHTML = '0';
+    document.getElementById('win-percent').innerHTML = '0';
+
+    if (gameType === 'flags') {
+        document.getElementById('game-choice').innerHTML = `
+        <h2>Ok, let's test your flag knowledge</h2>
+        <p>You will be presented with a flag and three options.</p>
+        <p>Guess which country the flag belongs to.</p>
+        <p>We play 10 rounds</p>
+        <button class="start-button" data-type="startFlags">START GAME</button>
+        `
+    } else {
+        alert(`Unknown game type: ${gameType}`);
+        throw `Unknown game type: ${gameType}. Aborting!`;
+    }
+}
