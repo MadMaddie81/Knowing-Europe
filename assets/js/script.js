@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 function gameStartup(gameType) {
 
-    document.getElementById('question').textContent = "Let's see how well you know the European countries";
+    document.getElementById('question').textContent = "";
     document.getElementById('score').innerHTML = '0';
     document.getElementById('played-games').innerHTML = '0';
     document.getElementById('win-percent').innerHTML = '0';
