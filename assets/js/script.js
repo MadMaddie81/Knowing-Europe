@@ -412,6 +412,9 @@ function flagLoop() {
  */
 function runFlags() {
 
+    document.getElementsByClassName('options-area')[0].classList.remove('red', 'green');
+    document.getElementsByClassName('options-area')[0].classList.add('button-background');
+
     document.getElementById('question').textContent = "What flag is this?";
     
     document.getElementsByClassName('options-area')[0].innerHTML = `
@@ -444,8 +447,7 @@ function runFlags() {
     for (button of buttons) {      
         button.addEventListener('click', function() {
             let answer = this.textContent;
-            let btn = this.classList;
-            checkAnswer(number, answer, btn);
+            checkAnswer(number, answer);
         }, {once : true});
     }
 }
@@ -475,9 +477,11 @@ function randomiseOptions(number) {
  * 
  * Takes in the array number of the correct answer, the text content and class list of the button pressed.
  */
-function checkAnswer(number, answer, button) {
+function checkAnswer(number, answer) {
+    
     let correct = countries[number].country;
     let message = document.getElementById('answer');
+    let background = document.getElementsByClassName('options-area')[0];
 
     removeListeners();
     
@@ -485,15 +489,15 @@ function checkAnswer(number, answer, button) {
         message.classList.add("correct");
         message.classList.remove("incorrect");
         message.textContent = "Correct!";
-        button.add("green")
-        button.remove("red");
+        background.classList.add("green")
+        background.classList.remove("red");
         incrementScore();
     } else {
         message.classList.add("incorrect");
         message.classList.remove("correct");
         message.innerHTML = `Wrong<br>This is the flag of ${correct}.`;
-        button.add("red");
-        button.remove("green");
+        background.classList.add("red");
+        background.classList.remove("green");
     }
 
     incrementRounds();

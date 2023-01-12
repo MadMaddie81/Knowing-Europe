@@ -170,15 +170,23 @@ body {
 .options-area {
     max-width: 70%;
     margin: 40px auto 5px;
+    padding: 15px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    border: 5px solid transparent;
+    border-radius: 25px;
+}
+
+.button-background {
+    box-shadow: 5px 5px 10px rgb(78, 81, 90);
 }
 
 .btn {
     font-family: Amiko, sans-serif;
     font-size: 100%;
     width: 150px;
-    min-height: 60px;
+    height: 65px;
     padding: 8px;
     border: 3px outset rgb(255, 201, 136);
     border-radius: 8px;
@@ -206,12 +214,12 @@ body {
 
 .green {
     background-color: lightgreen;
-    border-color: green;
+    border: green 5px double;
 }
 
 .red {
     background-color: lightcoral;
-    border-color: red;
+    border: red 5px double;
 }
 
 .correct {
@@ -276,13 +284,31 @@ body {
         float: none;
     }
 
+    #question {
+        font-size: 140%;
+    }
+
+    .picture-box {
+        font-size: 100%;
+    }
+
+    .big-button {
+        width: 130px;
+        height: 130px;
+        font-size: 80%;
+    }
+
+    .big-icon {
+        font-size: 300%;
+    }
+
     .game-area {
         width: 80vw;
         margin: 0 10vw;
     }
 
     .options-area {
-        max-width: 100%;
+        max-width: 70%;
     }
 
     .question {
@@ -307,7 +333,7 @@ body {
     }
 
     .picture-box {
-        width: 60%;
+        width: 70%;
         min-height: 15vh;
     }
 }
