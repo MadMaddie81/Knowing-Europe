@@ -382,12 +382,26 @@ function gameStartup(gameType) {
         `;
         let start = document.getElementById('start-flags');
         start.addEventListener('click', function() {
-            runFlags();
+            flagLoop();
         });
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
     }
+}
+
+/**
+ * The flag game loop that keep running until player runs out of game rounds.
+ */
+function flagLoop() {
+    
+    let rounds = parseInt(document.getElementById('played-games').innerText);
+
+    if (rounds < 10) {
+        runFlags();
+    };
+    
+    
 }
 
 
@@ -474,7 +488,8 @@ function checkAnswer(number, answer, button) {
         button.remove("green");
     }
 
-    incrementRounds();  
+    incrementRounds(); 
+    flagLoop(); 
 }
 
 /**
@@ -488,7 +503,7 @@ function incrementRounds() {
     document.getElementById('played-games').innerText = rounds;
 
     let wins = parseInt(document.getElementById('score').innerText);
-    document.getElementById('win-percent').innerText = (wins / rounds) * 100;
+    document.getElementById('win-percent').innerText = Math.round((wins / rounds) * 100);
 }
 
 /**
