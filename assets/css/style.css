@@ -86,7 +86,7 @@ body {
 .picture-box {
     max-width: 80%;
     margin: 0 auto;
-    min-height: 40vh;
+    min-height: 30vh;
     text-align: center;
     font-family: Amiko, sans-serif;
     font-weight: bold;
@@ -161,7 +161,7 @@ body {
 }
 
 .picture {
-    max-height: 40vh;
+    max-height: 30vh;
     max-width: 100%;
     margin: 0 auto;
     box-shadow: 5px 5px 10px rgb(78, 81, 90);
@@ -198,6 +198,8 @@ body {
     font-weight: bolder;
     color: midnightblue;
     font-size: 105%;
+    background-color: rgb(255, 201, 136);
+    border: 3px outset rgb(201, 131, 47);
 }
 
 .answer-area {
@@ -228,6 +230,20 @@ body {
 
 .incorrect {
     color: darkred;
+}
+
+.end > p {
+    font-size: 400%;
+}
+
+#conclusion {
+    margin-top: 5vh;
+}
+
+#play-again {
+    text-decoration: none;
+    color: black;
+    font-size: 120%;
 }
 
 .statistics-area {

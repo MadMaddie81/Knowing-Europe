@@ -26,7 +26,7 @@ let countries = [
     {
         country: 'Armenia',
         capitol: 'Yerevan',
-        flag: '<img src="assets/images/flags/Flag_of_Armenia.svg.webp" alt="Flag of Armenia" class="picture">',
+        flag: '<img src="assets/images/flags/Flag_of_Armenia.svg.png" alt="Flag of Armenia" class="picture">',
         photo: '<img src="assets/images/capitols/yerevan.jpg" alt="Yerevan" class="picture">'
     },
     {
@@ -242,7 +242,7 @@ let countries = [
     {
         country: 'Romania',
         capitol: 'Bucharest',
-        flag: '<img src="assets/images/flags/Flag_of_Romania.webp" alt="Flag of Romania" class="picture">',
+        flag: '<img src="assets/images/flags/Flag_of_Romania.png" alt="Flag of Romania" class="picture">',
         photo: '<img src="assets/images/capitols/bucharest.jpg" alt="Bucharest" class="picture">'
     },
     {
@@ -377,7 +377,7 @@ function gameStartup(gameType) {
           <h2>Ok, let's test your flag knowledge</h2>
           <p>You will be presented with a flag and three options.</p>
           <p>Guess which country the flag belongs to.</p>
-          <p>We play 10 rounds</p>
+          <p>We play 15 rounds</p>
           <button class="start-button" id="start-flags">START GAME</button>
         </div>
         `;
@@ -398,9 +398,13 @@ function flagLoop(usedNumbers) {
     
     let rounds = parseInt(document.getElementById('played-games').innerText);
 
-    if (rounds < 10) {
+    if (rounds < 15) {
         runFlags(usedNumbers);
-    };
+    } else {
+        setTimeout(() => {
+            endGame();
+         }, 2000);
+    }
     
     
 }
@@ -555,4 +559,37 @@ function resetGame() {
     document.getElementById('score').innerHTML = '0';
     document.getElementById('played-games').innerHTML = '0';
     document.getElementById('win-percent').innerHTML = '0';
+}
+
+/**
+ * Ends the game and displays the results
+ */
+function endGame() {
+    document.getElementsByClassName('options-area')[0].innerHTML = `<button class="btn"><a href="index.html" id="play-again">PLAY AGAIN</a></button>`;
+    document.getElementsByClassName('options-area')[0].classList.remove('button-background', 'red', 'green');
+    document.getElementById('answer').textContent = "";
+
+    let results = parseInt(document.getElementById('win-percent').innerText);
+
+    document.getElementById('question').textContent = "Here are your results:";
+    document.getElementById('picture').innerHTML = `
+        <div class="end">
+          <h3>You were correct on</h3>
+          <p>${results}%</p>
+          <h3>of the questions</h3>
+          <h2 id="conclusion"></h2>
+        </div>
+        `
+    if (results < 21) {
+        document.getElementById('conclusion').innerHTML = `That's not... very good.<br>Did you even try?`;
+    } else if (results > 20 && results < 51) {
+        document.getElementById('conclusion').innerHTML = `Nice attempt.<br>You might need some more practice though.`;
+    } else if (results > 50 && results < 81) {
+        document.getElementById('conclusion').innerHTML = `Good job!<br>A couple more times and you'll get them all`;
+    } else if (results > 80 && results < 100) {
+        document.getElementById('conclusion').innerHTML = `That's Amazing!<br>I'm sure you'll get 100% next time!`;
+    } else {
+        document.getElementById('conclusion').innerHTML = `YOU DID IT!<br>I'm so proud of you`;
+    };
+
 }
