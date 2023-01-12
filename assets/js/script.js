@@ -441,7 +441,7 @@ function runFlags() {
     document.getElementById('answer').textContent = "";
 
     let buttons = document.getElementsByClassName('btn');
-    for (button of buttons) {
+    for (button of buttons) {      
         button.addEventListener('click', function() {
             let answer = this.textContent;
             let btn = this.classList;
@@ -478,6 +478,8 @@ function randomiseOptions(number) {
 function checkAnswer(number, answer, button) {
     let correct = countries[number].country;
     let message = document.getElementById('answer');
+
+    removeListeners();
     
     if (answer === correct) {
         message.classList.add("correct");
@@ -499,6 +501,13 @@ function checkAnswer(number, answer, button) {
     setTimeout(() => {
         flagLoop();
      }, 1700);
+}
+
+function removeListeners() {
+    let buttons = document.getElementsByClassName('btn');
+    for (button of buttons) {
+        button.replaceWith(button.cloneNode(true));
+    };
 }
 
 /**
