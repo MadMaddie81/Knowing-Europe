@@ -32,7 +32,7 @@ let countries = [
     {
         country: 'Austria',
         capitol: 'Vienna',
-        flag: '<img src="assets/images/flags/Flag_of_Austria.svg.webp" alt="Flag of Austria" class="picture">',
+        flag: '<img src="assets/images/flags/Flag_of_Austria.svg.png" alt="Flag of Austria" class="picture">',
         photo: '<img src="assets/images/capitols/vienna.jpg" alt="" class="picture">'
     },
     {
@@ -338,7 +338,7 @@ let countries = [
     {
         country: 'Ukraine',
         capitol: 'Kiev',
-        flag: '<img src="assets/images/flags/Flag_of_Ukraine.svg.webp" alt="Flag of Ukraine" class="picture">',
+        flag: '<img src="assets/images/flags/Flag_of_Ukraine.svg.png" alt="Flag of Ukraine" class="picture">',
         photo: '<img src="assets/images/capitols/kiev.jpg" alt="Kiev" class="picture">'
     },
     {
