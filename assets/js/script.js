@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 /**
- * Explains the game chosen
+ * Explains the game chosen and let the user start the game loop
  */
 function gameStartup(gameType) {
 
@@ -404,7 +404,12 @@ function flagLoop() {
     
 }
 
-
+/**
+ * The main flag game
+ * Picks a country randomly from the array and displays the flag to the user
+ * 
+ * Gets two wrong options from another function and displays the three options on buttons for the user to press
+ */
 function runFlags() {
 
     document.getElementById('question').textContent = "What flag is this?";
@@ -429,10 +434,11 @@ function runFlags() {
 
     document.getElementById('picture').innerHTML = country.flag;
 
-
     document.getElementById('option1').textContent = countries[op1].country;
     document.getElementById('option2').textContent = countries[op2].country;
     document.getElementById('option3').textContent = countries[op3].country;
+
+    document.getElementById('answer').textContent = "";
 
     let buttons = document.getElementsByClassName('btn');
     for (button of buttons) {
@@ -488,8 +494,11 @@ function checkAnswer(number, answer, button) {
         button.remove("green");
     }
 
-    incrementRounds(); 
-    flagLoop(); 
+    incrementRounds();
+
+    setTimeout(() => {
+        flagLoop();
+     }, 1700);
 }
 
 /**
