@@ -369,6 +369,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function gameStartup(gameType) {
 
     resetGame();
+    let usedNumbers = [];
 
     if (gameType === 'flags') {
         document.getElementById('picture').innerHTML = `
@@ -382,7 +383,7 @@ function gameStartup(gameType) {
         `;
         let start = document.getElementById('start-flags');
         start.addEventListener('click', function() {
-            flagLoop();
+            flagLoop(usedNumbers);
         });
     } else {
         alert(`Unknown game type: ${gameType}`);
@@ -393,12 +394,12 @@ function gameStartup(gameType) {
 /**
  * The flag game loop that keep running until player runs out of game rounds.
  */
-function flagLoop() {
+function flagLoop(usedNumbers) {
     
     let rounds = parseInt(document.getElementById('played-games').innerText);
 
     if (rounds < 10) {
-        runFlags();
+        runFlags(usedNumbers);
     };
     
     
@@ -410,7 +411,7 @@ function flagLoop() {
  * 
  * Gets two wrong options from another function and displays the three options on buttons for the user to press
  */
-function runFlags() {
+function runFlags(usedNumbers) {
 
     document.getElementsByClassName('options-area')[0].classList.remove('red', 'green');
     document.getElementsByClassName('options-area')[0].classList.add('button-background');
@@ -423,7 +424,13 @@ function runFlags() {
       <button data-type="answer" class="btn" id="option3"></button>
     `;
 
-    let number = Math.floor(Math.random() * 57);
+    let number;
+    do {
+        number = Math.floor(Math.random() * 57);
+    } while (usedNumbers.includes(number));
+
+    usedNumbers.push(number);
+
     let country = countries[number];
 
     let optionNumbers = randomiseOptions(number);
@@ -447,7 +454,7 @@ function runFlags() {
     for (button of buttons) {      
         button.addEventListener('click', function() {
             let answer = this.textContent;
-            checkAnswer(number, answer);
+            checkAnswer(number, answer, usedNumbers);
         }, {once : true});
     }
 }
@@ -477,7 +484,7 @@ function randomiseOptions(number) {
  * 
  * Takes in the array number of the correct answer, the text content and class list of the button pressed.
  */
-function checkAnswer(number, answer) {
+function checkAnswer(number, answer, usedNumbers) {
     
     let correct = countries[number].country;
     let message = document.getElementById('answer');
@@ -503,7 +510,7 @@ function checkAnswer(number, answer) {
     incrementRounds();
 
     setTimeout(() => {
-        flagLoop();
+        flagLoop(usedNumbers);
      }, 1700);
 }
 
@@ -544,6 +551,7 @@ function resetGame() {
     document.getElementById('question').textContent = "";
     document.getElementById('answer').textContent = "";
     document.getElementsByClassName('options-area')[0].innerHTML = "";
+    document.getElementsByClassName('options-area')[0].classList.remove('button-background', 'red', 'green');
     document.getElementById('score').innerHTML = '0';
     document.getElementById('played-games').innerHTML = '0';
     document.getElementById('win-percent').innerHTML = '0';
