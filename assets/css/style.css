@@ -169,7 +169,7 @@ body {
 
 .options-area {
     max-width: 70%;
-    margin: 40px auto;
+    margin: 40px auto 5px;
     display: flex;
     justify-content: space-around;
 }
@@ -177,10 +177,11 @@ body {
 .btn {
     font-family: Amiko, sans-serif;
     font-size: 100%;
-    width: 130px;
-    min-height: 70px;
+    width: 150px;
+    min-height: 60px;
     padding: 8px;
     border: 3px outset rgb(255, 201, 136);
+    border-radius: 8px;
     background-color: rgb(255, 237, 215);
     color: black;
 }
@@ -192,14 +193,15 @@ body {
 }
 
 .answer-area {
-    max-width: 60%;
+    max-width: 90%;
     margin: 0 auto;
     padding: 10px;
     text-align: center;
-    min-height: 30px;
+    min-height: 60px;
     vertical-align: middle;
     font-family: Amiko, sans-serif;
     font-weight: bold;
+    font-size: 30px;
 }
 
 .green {

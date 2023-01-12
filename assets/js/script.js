@@ -300,31 +300,31 @@ let countries = [
         photo: '<img src="assets/images/capitols/bern.jpg" alt="Bern" class="picture">'
     },
     {
-        country: 'Czech Republic',
+        country: 'the Czech Republic',
         capitol: 'Prague',
         flag: '<img src="assets/images/flags/Flag_of_the_Czech_Republic.svg.png" alt="Flag of the Czech Republic" class="picture">',
         photo: '<img src="assets/images/capitols/prague.jpg" alt="Prague" class="picture">'
     },
     {
-        country: 'Faroe Islands',
+        country: 'the Faroe Islands',
         capitol: 'Tórshavn',
         flag: '<img src="assets/images/flags/Flag_of_the_Faroe_Islands.svg.png" alt="Flag of the Faroe Islands" class="picture">',
         photo: '<img src="assets/images/capitols/torshavn.jpg" alt="Tórshavn" class="picture">'
     },
     {
-        country: 'Netherlands',
+        country: 'the Netherlands',
         capitol: 'Amsterdam',
         flag: '<img src="assets/images/flags/Flag_of_the_Netherlands.png" alt="Flag of the Netherlands" class="picture">',
         photo: '<img src="assets/images/capitols/amsterdam.jpg" alt="Amsterdam" class="picture">'
     },
     {
-        country: 'United Kingdom',
+        country: 'the United Kingdom',
         capitol: 'London',
         flag: '<img src="assets/images/flags/Flag_of_the_United_Kingdom.svg.png" alt="Flag of the United Kingdom" class="picture">',
         photo: '<img src="assets/images/capitols/london.jpg" alt="London" class="picture">'
     },
     {
-        country: 'Vatican City',
+        country: 'the Vatican City',
         capitol: 'Vatican City',
         flag: '<img src="assets/images/flags/Flag_of_the_Vatican_City.svg.png" alt="Flag of the Vatican City" class="picture">',
         photo: '<img src="assets/images/capitols/vatican_city.jpg" alt="the Vatican City" class="picture">'
@@ -364,16 +364,11 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 /**
- * Resets scores and explains the game chosen
+ * Explains the game chosen
  */
 function gameStartup(gameType) {
 
-    document.getElementById('question').textContent = "";
-    document.getElementById('answer').textContent = "";
-    document.getElementsByClassName('options-area')[0].innerHTML = "";
-    document.getElementById('score').innerHTML = '0';
-    document.getElementById('played-games').innerHTML = '0';
-    document.getElementById('win-percent').innerHTML = '0';
+    resetGame();
 
     if (gameType === 'flags') {
         document.getElementById('picture').innerHTML = `
@@ -386,16 +381,16 @@ function gameStartup(gameType) {
         </div>
         `;
         let start = document.getElementById('start-flags');
-        start.addEventListener('click', function() {runFlags()});
+        start.addEventListener('click', function() {
+            runFlags();
+        });
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
     }
 }
 
-/**
- * The flag game loop that keep running until player runs out of game rounds.
- */
+
 function runFlags() {
 
     document.getElementById('question').textContent = "What flag is this?";
@@ -404,8 +399,7 @@ function runFlags() {
       <button data-type="answer" class="btn" id="option1"></button>
       <button data-type="answer" class="btn" id="option2"></button>
       <button data-type="answer" class="btn" id="option3"></button>
-    `
-    
+    `;
 
     let number = Math.floor(Math.random() * 57);
     let country = countries[number];
@@ -430,11 +424,10 @@ function runFlags() {
     for (button of buttons) {
         button.addEventListener('click', function() {
             let answer = this.textContent;
-            let button = this.classList;
-            checkAnswer(number, answer, button);
-        })
+            let btn = this.classList;
+            checkAnswer(number, answer, btn);
+        }, {once : true});
     }
-
 }
 
 /**
@@ -465,20 +458,56 @@ function randomiseOptions(number) {
 function checkAnswer(number, answer, button) {
     let correct = countries[number].country;
     let message = document.getElementById('answer');
-
+    
     if (answer === correct) {
         message.classList.add("correct");
         message.classList.remove("incorrect");
-        message.textContent = "That is correct!";
+        message.textContent = "Correct!";
         button.add("green")
         button.remove("red");
+        incrementScore();
     } else {
         message.classList.add("incorrect");
         message.classList.remove("correct");
-        message.textContent = `That is wrong. This is the flag of ${correct}.`;
+        message.innerHTML = `Wrong<br>This is the flag of ${correct}.`;
         button.add("red");
         button.remove("green");
     }
 
+    incrementRounds();  
+}
 
+/**
+ * Get the number of played rounds from DOM and increment by 1
+ * 
+ * Adjusts the % of won games in DOM
+ */
+function incrementRounds() {
+    let rounds = parseInt(document.getElementById('played-games').innerText);
+    rounds++;
+    document.getElementById('played-games').innerText = rounds;
+
+    let wins = parseInt(document.getElementById('score').innerText);
+    document.getElementById('win-percent').innerText = (wins / rounds) * 100;
+}
+
+/**
+ * Gets score from DOM and increments it by 1
+ */
+function incrementScore() {
+    let score = parseInt(document.getElementById('score').innerText);
+    score++;
+    document.getElementById('score').textContent = score;
+}
+
+/**
+ * Resets the scores from previous game
+ */
+function resetGame() {
+    document.getElementById('question').textContent = "";
+    document.getElementById('answer').textContent = "";
+    document.getElementsByClassName('options-area')[0].innerHTML = "";
+    document.getElementById('score').innerHTML = '0';
+    document.getElementById('played-games').innerHTML = '0';
+    document.getElementById('win-percent').innerHTML = '0';
 }
