@@ -385,6 +385,20 @@ function gameStartup(gameType) {
         start.addEventListener('click', function() {
             flagLoop(usedNumbers);
         });
+    } else if (gameType === 'capitols') {
+        document.getElementById('picture').innerHTML = `
+        <div class="flag-box">
+          <h2>Ok, let's see how well you know the capitols of Europe</h2>
+          <p>I will tell you the country and show you a picture of the city.</p>
+          <p>You will have three options.</p>
+          <p>We play 15 rounds</p>
+          <button class="start-button" id="start-capitols">START GAME</button>
+        </div>
+        `;
+        let start = document.getElementById('start-capitols');
+        start.addEventListener('click', function() {
+            capitolLoop(usedNumbers);
+        });
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -405,8 +419,22 @@ function flagLoop(usedNumbers) {
             endGame();
          }, 2000);
     }
-    
-    
+}
+
+/**
+ * The capitols game loop that keep running until player runs out of game rounds.
+ */
+function capitolLoop(usedNumbers) {
+
+    let rounds = parseInt(document.getElementById('played-games').innerText);
+
+    if (rounds < 15) {
+        runCapitols(usedNumbers);
+    } else {
+        setTimeout(() => {
+            endGame();
+         }, 2000);
+    }
 }
 
 /**
@@ -458,9 +486,64 @@ function runFlags(usedNumbers) {
     for (button of buttons) {      
         button.addEventListener('click', function() {
             let answer = this.textContent;
-            checkAnswer(number, answer, usedNumbers);
+            checkFlagAnswer(number, answer, usedNumbers);
         }, {once : true});
     }
+}
+
+/**
+ * The main capitols game
+ * Picks a country randomly from the array, asks the user what the capitol of the city is 
+ * and displays a picture of the city to the user.
+ * 
+ * Gets two wrong options from another function and displays the three options on buttons for the user to press
+ */
+function runCapitols(usedNumbers) {
+    document.getElementsByClassName('options-area')[0].classList.remove('red', 'green');
+    document.getElementsByClassName('options-area')[0].classList.add('button-background');    
+    
+    document.getElementsByClassName('options-area')[0].innerHTML = `
+      <button data-type="answer" class="btn" id="option1"></button>
+      <button data-type="answer" class="btn" id="option2"></button>
+      <button data-type="answer" class="btn" id="option3"></button>
+    `;
+
+    let number;
+    do {
+        number = Math.floor(Math.random() * 57);
+    } while (usedNumbers.includes(number));
+
+    usedNumbers.push(number);
+
+    let country = countries[number];
+
+    let optionNumbers = randomiseOptions(number);
+    
+    let optionPlacing = Math.floor(Math.random() * 3);
+    optionNumbers.splice(optionPlacing, 0, number);
+
+    let op1 = optionNumbers[0];
+    let op2 = optionNumbers[1];
+    let op3 = optionNumbers[2];
+
+    document.getElementById('question').innerHTML = `What is the capitol of ${country.country}?`;
+
+    document.getElementById('picture').innerHTML = country.photo;
+
+    document.getElementById('option1').textContent = countries[op1].capitol;
+    document.getElementById('option2').textContent = countries[op2].capitol;
+    document.getElementById('option3').textContent = countries[op3].capitol;
+
+    document.getElementById('answer').textContent = "";
+
+    let buttons = document.getElementsByClassName('btn');
+    for (button of buttons) {      
+        button.addEventListener('click', function() {
+            let answer = this.textContent;
+            checkCapitolAnswer(number, answer, usedNumbers);
+        }, {once : true});
+    }
+
 }
 
 /**
@@ -488,7 +571,38 @@ function randomiseOptions(number) {
  * 
  * Takes in the array number of the correct answer, the text content and class list of the button pressed.
  */
-function checkAnswer(number, answer, usedNumbers) {
+function checkCapitolAnswer(number, answer, usedNumbers) {
+    
+    let correct = countries[number].capitol;
+    let country = countries[number].country;
+    let message = document.getElementById('answer');
+    let background = document.getElementsByClassName('options-area')[0];
+
+    removeListeners();
+    
+    if (answer === correct) {
+        message.classList.add("correct");
+        message.classList.remove("incorrect");
+        message.textContent = "Correct!";
+        background.classList.add("green")
+        background.classList.remove("red");
+        incrementScore();
+    } else {
+        message.classList.add("incorrect");
+        message.classList.remove("correct");
+        message.innerHTML = `Wrong<br>The capitol of ${country} is ${correct}.`;
+        background.classList.add("red");
+        background.classList.remove("green");
+    }
+
+    incrementRounds();
+
+    setTimeout(() => {
+        capitolLoop(usedNumbers);
+     }, 1700);
+}
+
+function checkFlagAnswer(number, answer, usedNumbers) {
     
     let correct = countries[number].country;
     let message = document.getElementById('answer');
