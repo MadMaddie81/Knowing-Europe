@@ -359,9 +359,9 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener('click', function() {
             let gameType = this.getAttribute('data-type');
             gameStartup(gameType);
-        })
+        });
     }
-})
+});
 
 /**
  * Explains the game chosen and let the user start the game loop
@@ -483,7 +483,7 @@ function runFlags(usedNumbers) {
     document.getElementById('answer').textContent = "";
 
     let buttons = document.getElementsByClassName('btn');
-    for (button of buttons) {      
+    for (let button of buttons) {      
         button.addEventListener('click', function() {
             let answer = this.textContent;
             checkFlagAnswer(number, answer, usedNumbers);
@@ -537,7 +537,7 @@ function runCapitols(usedNumbers) {
     document.getElementById('answer').textContent = "";
 
     let buttons = document.getElementsByClassName('btn');
-    for (button of buttons) {      
+    for (let button of buttons) {      
         button.addEventListener('click', function() {
             let answer = this.textContent;
             checkCapitolAnswer(number, answer, usedNumbers);
@@ -584,7 +584,7 @@ function checkCapitolAnswer(number, answer, usedNumbers) {
         message.classList.add("correct");
         message.classList.remove("incorrect");
         message.textContent = "Correct!";
-        background.classList.add("green")
+        background.classList.add("green");
         background.classList.remove("red");
         incrementScore();
     } else {
@@ -614,7 +614,7 @@ function checkFlagAnswer(number, answer, usedNumbers) {
         message.classList.add("correct");
         message.classList.remove("incorrect");
         message.textContent = "Correct!";
-        background.classList.add("green")
+        background.classList.add("green");
         background.classList.remove("red");
         incrementScore();
     } else {
@@ -634,9 +634,9 @@ function checkFlagAnswer(number, answer, usedNumbers) {
 
 function removeListeners() {
     let buttons = document.getElementsByClassName('btn');
-    for (button of buttons) {
+    for (let button of buttons) {
         button.replaceWith(button.cloneNode(true));
-    };
+    }
 }
 
 /**
@@ -679,7 +679,7 @@ function resetGame() {
  * Ends the game and displays the results
  */
 function endGame() {
-    document.getElementsByClassName('options-area')[0].innerHTML = `<button class="btn"><a href="index.html" id="play-again">PLAY AGAIN</a></button>`;
+    document.getElementsByClassName('options-area')[0].innerHTML = `<a href="index.html" id="play-again"><button class="btn">PLAY AGAIN</button></a>`;
     document.getElementsByClassName('options-area')[0].classList.remove('button-background', 'red', 'green');
     document.getElementById('answer').textContent = "";
 
@@ -693,7 +693,7 @@ function endGame() {
           <h3>of the questions</h3>
           <h2 id="conclusion"></h2>
         </div>
-        `
+        `;
     if (results < 21) {
         document.getElementById('conclusion').innerHTML = `That's not... very good.<br>Did you even try?`;
     } else if (results > 20 && results < 51) {
@@ -704,6 +704,5 @@ function endGame() {
         document.getElementById('conclusion').innerHTML = `That's Amazing!<br>I'm sure you'll get 100% next time!`;
     } else {
         document.getElementById('conclusion').innerHTML = `YOU DID IT!<br>I'm so proud of you`;
-    };
-
+    }
 }
