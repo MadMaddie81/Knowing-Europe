@@ -26,8 +26,8 @@ let countries = [
         capitol: 'Andorra la Vella',
         flag: '<img src="assets/images/flags/Flag_of_Andorra.svg.png" alt="Flag of Andorra" class="picture">',
         photo: '<img src="assets/images/capitols/andorra_la_vella.jpg" alt="Andorra la Vella" class="picture">',
-        city1: 'Escaldes-Engordany',
-        city2: 'Sant Julià de Lòria'
+        city1: 'Andorra del Rio',
+        city2: 'Andorra de la Casa'
     },
     {
         country: 'Armenia',
@@ -43,7 +43,7 @@ let countries = [
         flag: '<img src="assets/images/flags/Flag_of_Austria.svg.png" alt="Flag of Austria" class="picture">',
         photo: '<img src="assets/images/capitols/vienna.jpg" alt="" class="picture">',
         city1: 'Graz',
-        city2: 'Linz'
+        city2: 'Salzburg'
     },
     {
         country: 'Azerbaijan',
@@ -75,7 +75,7 @@ let countries = [
         flag: '<img src="assets/images/flags/Flag_of_Bosnia_and_Herzegovina.svg.png" alt="Flag of Boznia & Herzegovina" class="picture">',
         photo: '<img src="assets/images/capitols/sarajevo.jpg" alt="Sarajevo" class="picture">',
         city1: 'Banja Luka',
-        city2: 'Tuzla'
+        city2: 'Zagreb'
     },
     {
         country: 'Bulgaria',
@@ -106,7 +106,7 @@ let countries = [
         capitol: 'Copenhagen',
         flag: '<img src="assets/images/flags/Flag_of_Denmark.svg.png" alt="Flag of Denmark" class="picture">',
         photo: '<img src="assets/images/capitols/copenhagen.jpg" alt="Copenhagen" class="picture">',
-        city1: 'Aarhus',
+        city1: 'Roskilde',
         city2: 'Odense'
     },
     {
@@ -115,7 +115,7 @@ let countries = [
         flag: '<img src="assets/images/flags/Flag_of_Estonia.svg.png" alt="Flag of Estonia" class="picture">',
         photo: '<img src="assets/images/capitols/tallin.jpg" alt="Tallin" class="picture">',
         city1: 'Tartu',
-        city2: 'Narva'
+        city2: 'Riga'
     },
     {
         country: 'Finland',
@@ -138,8 +138,8 @@ let countries = [
         capitol: 'Tbilisi',
         flag: '<img src="assets/images/flags/Flag_of_Georgia.svg.png" alt="Flag of Georgia" class="picture">',
         photo: '<img src="assets/images/capitols/tbilisi.jpg" alt="" class="picture">',
-        city1: 'Lyon',
-        city2: 'Marseille'
+        city1: 'Batumi',
+        city2: 'Kutaisi'
     },
     {
         country: 'Germany',
@@ -163,7 +163,7 @@ let countries = [
         flag: '<img src="assets/images/flags/Flag_of_Greece.svg.png" alt="Flag of Greece" class="picture">',
         photo: '<img src="assets/images/capitols/athens.jpg" alt="Athens" class="picture">',
         city1: 'Thessaloniki',
-        city2: 'Heraklion'
+        city2: 'Ankara'
     },
     {
         country: 'Greenland',
@@ -178,7 +178,7 @@ let countries = [
         capitol: 'Budapest',
         flag: '<img src="assets/images/flags/Flag_of_Hungary.svg.png" alt="Flag of Hungary" class="picture">',
         photo: '<img src="assets/images/capitols/budapest.jpg" alt="Budapest" class="picture">',
-        city1: 'Kecskemét',
+        city1: 'Bucharest',
         city2: 'Miskolc'
     },
     {
@@ -227,7 +227,7 @@ let countries = [
         flag: '<img src="assets/images/flags/Flag_of_Latvia.svg.png" alt="Flag of Latvia" class="picture">',
         photo: '<img src="assets/images/capitols/riga.jpg" alt="Riga" class="picture">',
         city1: 'Ventspils',
-        city2: 'Liepāja'
+        city2: 'Vilnius'
     },
     {
         country: 'Liechtenstein',
@@ -235,7 +235,7 @@ let countries = [
         flag: '<img src="assets/images/flags/Flag_of_Liechtenstein.svg.png" alt="Flag of Liechtenstein" class="picture">',
         photo: '<img src="assets/images/capitols/vaduz.jpg" alt="Vaduz" class="picture">',
         city1: 'Schaan',
-        city2: 'Eschen'
+        city2: 'Liechtenstein'
     },
     {
         country: 'Lithuania',
@@ -243,7 +243,7 @@ let countries = [
         flag: '<img src="assets/images/flags/Flag_of_Lithuania.svg.png" alt="Flag of Lithuania" class="picture">',
         photo: '<img src="assets/images/capitols/vilnius.jpg" alt="Vilnius" class="picture">',
         city1: 'Kaunas',
-        city2: 'Klaipėda'
+        city2: 'Tallin'
     },
     {
         country: 'Luxembourg',
