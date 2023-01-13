@@ -387,3 +387,31 @@ body {
         margin: 0 5vw;
     }
 }
+
+@media (hover: none) and (pointer: coarse) {
+
+    .game-mode-button:hover {
+        background: rgb(255, 222, 182);
+        border: 3px solid rgb(255, 201, 136);
+    }
+
+    .big-button:hover {
+        background: rgb(255, 222, 182);
+        border: 7px solid rgb(255, 201, 136);
+    }
+
+    .start-button:hover {
+        background: rgb(255, 222, 182);
+        border: 7px solid rgb(255, 201, 136);
+        font-size: 25px;
+        color: black;
+    }
+
+    .btn:hover {
+        font-weight: normal;
+        color: black;
+        font-size: 100%;
+        border: 3px outset rgb(255, 201, 136);
+        background-color: rgb(255, 237, 215);
+    }
+}
