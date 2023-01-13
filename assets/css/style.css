@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiko&family=Italianno&family=Libre+Baskerville&display=swap');
 
+/* Styling for the main window and background. */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +14,8 @@ body {
     justify-content: center;
     flex-direction: column;
 }
+
+/* Header with title and "Start New Game" buttons */
 
 .heading {
     box-sizing: border-box;
@@ -68,6 +72,8 @@ body {
     border: 3px solid rgb(201, 131, 47);
 }
 
+/* The game area where the questions and pictures are displayed */
+
 .game-area {
     width: 70vw;
     margin: 0 15vw;
@@ -121,7 +127,7 @@ body {
     width: 200px;
     height: 200px;
     font-size: 120%;
-    margin: 30px;
+    margin: 20px;
     color: black;
     background: rgb(255, 222, 182);
     border: 7px solid rgb(255, 201, 136);
@@ -166,6 +172,8 @@ body {
     margin: 0 auto;
     box-shadow: 5px 5px 10px rgb(78, 81, 90);
 }
+
+/* Area for the options buttons and answer messages. */
 
 .options-area {
     max-width: 70%;
@@ -232,6 +240,8 @@ body {
     color: darkred;
 }
 
+/* End game screen with results */
+
 .end > p {
     font-size: 400%;
 }
@@ -245,6 +255,8 @@ body {
     color: black;
     font-size: 120%;
 }
+
+/* Game statistics bar */
 
 .statistics-area {
     display: flex;
@@ -261,6 +273,8 @@ body {
     text-align: center;
     margin: 15px auto;
 }
+
+/* Footer */
 
 .footer {
     height: 70px;
@@ -281,6 +295,8 @@ body {
     color: rgb(222, 224, 231);
 }
 
+/* Media queries */
+
 @media screen and (max-width: 1050px) {
 
     .heading {
@@ -295,6 +311,7 @@ body {
         text-align: center;
 
     }
+
     .game-mode {
         clear: both;
         float: none;
@@ -309,8 +326,9 @@ body {
     }
 
     .big-button {
-        width: 130px;
-        height: 130px;
+        width: 120px;
+        height: 120px;
+        margin: 20px;
         font-size: 80%;
     }
 
@@ -329,6 +347,10 @@ body {
 
     .question {
         font-size: 170%;
+    }
+
+    .game-choice {
+        width: 90%;
     }
 
     .game-choice > h2 {
@@ -370,6 +392,10 @@ body {
         margin: 0 5vw;
     }
 
+    .big-button {
+        margin: 20px 5px 0;
+    }
+
     .options-area {
         display: flex;
         flex-direction: column;
@@ -387,6 +413,8 @@ body {
         margin: 0 5vw;
     }
 }
+
+/* Remove hover effects for touch screens */
 
 @media (hover: none) and (pointer: coarse) {
 

@@ -1,7 +1,10 @@
 /**
- * This script starts with a big array of countries that are used to play the game.
+ * This script starts with a big array of used to play the game.
  * 
- * The actual game code starts at line 354
+ * It contains the name of the country, the capitol, html for flag and capitol images 
+ * and two "wrong" options for the capitol game
+ * 
+ * The actual game code starts at line 470
  */
 
 let countries = [
@@ -463,7 +466,7 @@ let countries = [
     },
 ];
 
-// Wait for the page to load before running the game, then add event listeners to the buttons
+// Wait for the page to load before running the game, then add event listeners to the game start buttons
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -481,8 +484,10 @@ document.addEventListener("DOMContentLoaded", function() {
  * Explains the game chosen and let the user start the game loop
  */
 function gameStartup(gameType) {
-
+    
     resetGame();
+
+    //Creates an array that keeps count of which countries has been played the current round to prevent repeat questions.
     let usedNumbers = [];
 
     if (gameType === 'flags') {
@@ -513,9 +518,6 @@ function gameStartup(gameType) {
         start.addEventListener('click', function() {
             capitolLoop(usedNumbers);
         });
-    } else {
-        alert(`Unknown game type: ${gameType}`);
-        throw `Unknown game type: ${gameType}. Aborting!`;
     }
 }
 
@@ -553,23 +555,27 @@ function capitolLoop(usedNumbers) {
 
 /**
  * The main flag game
- * Picks a country randomly from the array and displays the flag to the user
  * 
- * Gets two wrong options from another function and displays the three options on buttons for the user to press
+ * Picks a country randomly from the array, and displays the flag to the user
  */
 function runFlags(usedNumbers) {
 
+    //Removes styling from previous question
     document.getElementsByClassName('options-area')[0].classList.remove('red', 'green');
     document.getElementsByClassName('options-area')[0].classList.add('button-background');
-
-    document.getElementById('question').textContent = "What flag is this?";
+    document.getElementById('answer').textContent = "";
     
+    //Creates the option buttons
     document.getElementsByClassName('options-area')[0].innerHTML = `
       <button data-type="answer" class="btn" id="option1"></button>
       <button data-type="answer" class="btn" id="option2"></button>
       <button data-type="answer" class="btn" id="option3"></button>
     `;
 
+    /*
+    Randomises a number to be used on the main countries array, and compares it to 
+    the array of numbers already used during the current game.
+    */
     let number;
     do {
         number = Math.floor(Math.random() * 57);
@@ -579,8 +585,10 @@ function runFlags(usedNumbers) {
 
     let country = countries[number];
 
+    //Calls on function to randomise the two wrong answers from the countries array
     let optionNumbers = randomiseOptions(number);
     
+    //Randomises which option button will be the correct one
     let optionPlacing = Math.floor(Math.random() * 3);
     optionNumbers.splice(optionPlacing, 0, number);
 
@@ -588,14 +596,15 @@ function runFlags(usedNumbers) {
     let op2 = optionNumbers[1];
     let op3 = optionNumbers[2];
 
+    //Displays the question, the flag and the options
+    document.getElementById('question').textContent = "What flag is this?";
     document.getElementById('picture').innerHTML = country.flag;
 
     document.getElementById('option1').textContent = countries[op1].country;
     document.getElementById('option2').textContent = countries[op2].country;
     document.getElementById('option3').textContent = countries[op3].country;
 
-    document.getElementById('answer').textContent = "";
-
+    //Adds listeners to the option buttons, and calls function to check the answer
     let buttons = document.getElementsByClassName('btn');
     for (let button of buttons) {      
         button.addEventListener('click', function() {
@@ -607,21 +616,27 @@ function runFlags(usedNumbers) {
 
 /**
  * The main capitols game
- * Picks a country randomly from the array, asks the user what the capitol of the city is 
- * and displays a picture of the city to the user.
- * 
- * Gets two wrong options from another function and displays the three options on buttons for the user to press
+ * Picks a country randomly from the array, asks the user what the capitol of the city is, 
+ * and displays a picture of the city and answer options to the user.
  */
 function runCapitols(usedNumbers) {
+
+    //Removes styling from previous question
     document.getElementsByClassName('options-area')[0].classList.remove('red', 'green');
-    document.getElementsByClassName('options-area')[0].classList.add('button-background');    
+    document.getElementsByClassName('options-area')[0].classList.add('button-background');
+    document.getElementById('answer').textContent = ""; 
     
+    //Creates the option buttons
     document.getElementsByClassName('options-area')[0].innerHTML = `
       <button data-type="answer" class="btn" id="option1"></button>
       <button data-type="answer" class="btn" id="option2"></button>
       <button data-type="answer" class="btn" id="option3"></button>
     `;
 
+    /*
+    Randomises a number to be used on the main countries array, and compares it to 
+    the array of numbers already used during the current game.
+    */
     let number;
     do {
         number = Math.floor(Math.random() * 57);
@@ -629,6 +644,7 @@ function runCapitols(usedNumbers) {
 
     usedNumbers.push(number);
 
+    //Collects info from the countries array
     let country = countries[number];
     let capitol = countries[number].capitol;
 
@@ -636,6 +652,7 @@ function runCapitols(usedNumbers) {
     options.push(country.city1);
     options.push(country.city2);
     
+    //Randomises which option button will be the correct one
     let optionPlacing = Math.floor(Math.random() * 3);
     options.splice(optionPlacing, 0, capitol);
 
@@ -643,16 +660,15 @@ function runCapitols(usedNumbers) {
     let op2 = options[1];
     let op3 = options[2];
 
+    //Displays the question, a picture of the capitol and the options
     document.getElementById('question').innerHTML = `What is the capitol of ${country.country}?`;
-
     document.getElementById('picture').innerHTML = country.photo;
 
     document.getElementById('option1').textContent = options[0];
     document.getElementById('option2').textContent = options[1];
     document.getElementById('option3').textContent = options[2];
 
-    document.getElementById('answer').textContent = "";
-
+    //Adds listeners to the option buttons, and calls function to check the answer
     let buttons = document.getElementsByClassName('btn');
     for (let button of buttons) {      
         button.addEventListener('click', function() {
@@ -664,17 +680,13 @@ function runCapitols(usedNumbers) {
 }
 
 /**
- * Takes in the array number of the current question
- * 
- * Randomises 2 numbers and compare them to each other
- * and the question to avoid duplication
- * 
- * Returns the two random numbers
+ * Function for randomising the "wrong" options in the flag game
  */
 function randomiseOptions(number) {
     let num1;
     let num2;
 
+    //Loop that keep randomising two numbers until they don't match each other or the number of the "correct" answer.
     do {
         num1 = Math.floor(Math.random() * 57);
         num2 = Math.floor(Math.random() * 57);
@@ -684,9 +696,46 @@ function randomiseOptions(number) {
 }
 
 /**
- * Comparing the clicked button with the correct answer.
+ * Comparing the clicked button with the correct answer in the flags game.
  * 
- * Takes in the array number of the correct answer, the text content and class list of the button pressed.
+ * Takes in the array number of the correct answer, and the text content of the button pressed.
+ */
+function checkFlagAnswer(number, answer, usedNumbers) {
+    
+    let correct = countries[number].country;
+    let message = document.getElementById('answer');
+    let background = document.getElementsByClassName('options-area')[0];
+
+    removeListeners();
+    
+    //Displays right/wrong answer
+    if (answer === correct) {
+        message.classList.add("correct");
+        message.classList.remove("incorrect");
+        message.textContent = "Correct!";
+        background.classList.add("green");
+        background.classList.remove("red");
+        incrementScore();
+    } else {
+        message.classList.add("incorrect");
+        message.classList.remove("correct");
+        message.innerHTML = `Wrong<br>This is the flag of ${correct}.`;
+        background.classList.add("red");
+        background.classList.remove("green");
+    }
+
+    incrementRounds();
+
+    //Sets a short timer before continuing with the next question, for comfortable pacing of the game.
+    setTimeout(() => {
+        flagLoop(usedNumbers);
+     }, 1700);
+}
+
+/**
+ * Comparing the clicked button with the correct answer in the capitols game.
+ * 
+ * Takes in the array number of the correct answer, and the text content of the button pressed.
  */
 function checkCapitolAnswer(number, answer, usedNumbers) {
     
@@ -714,41 +763,15 @@ function checkCapitolAnswer(number, answer, usedNumbers) {
 
     incrementRounds();
 
+    //Sets a short timer before continuing with the next question, for comfortable pacing of the game.
     setTimeout(() => {
         capitolLoop(usedNumbers);
      }, 1700);
 }
 
-function checkFlagAnswer(number, answer, usedNumbers) {
-    
-    let correct = countries[number].country;
-    let message = document.getElementById('answer');
-    let background = document.getElementsByClassName('options-area')[0];
-
-    removeListeners();
-    
-    if (answer === correct) {
-        message.classList.add("correct");
-        message.classList.remove("incorrect");
-        message.textContent = "Correct!";
-        background.classList.add("green");
-        background.classList.remove("red");
-        incrementScore();
-    } else {
-        message.classList.add("incorrect");
-        message.classList.remove("correct");
-        message.innerHTML = `Wrong<br>This is the flag of ${correct}.`;
-        background.classList.add("red");
-        background.classList.remove("green");
-    }
-
-    incrementRounds();
-
-    setTimeout(() => {
-        flagLoop(usedNumbers);
-     }, 1700);
-}
-
+/**
+ * Removes all event listeners from the option buttons, to prevent double answer submissions.
+ */
 function removeListeners() {
     let buttons = document.getElementsByClassName('btn');
     for (let button of buttons) {
@@ -780,7 +803,7 @@ function incrementScore() {
 }
 
 /**
- * Resets the scores from previous game
+ * Resets the scores and styling from previous game
  */
 function resetGame() {
     document.getElementById('question').textContent = "";
