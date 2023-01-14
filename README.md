@@ -111,36 +111,40 @@ __In both game modes the game runs for 15 rounds.__
 
 ## __Testing__
 
+> __The site and the game has been tested both manually and with different web tools__
+
 ### __Responsiveness & Visual Glitches__
+
+> Screenshot from iPhone XR
+![iPhone](assets/images/readme_images/iphone.png) 
+
+> Screenshot from iPad Air Pro
+![iPad](assets/images/readme_images/ipad.png)
 
 * The page has been tested to ensure that it looks as intended on screen sizes from 320px width and up.
 * The responsiveness tests were done using:
   - Chrome developer tools
   - Edge
   - Safari, iPhone XR
-  - Safari, iPad Air
+  - Safari, iPad Air Pros
 * No images or fonts has been stretched or in other ways warped.
 * No elements overlap.
 * No horizontal scrolling appear.
-* Header stays at the top and footer stays at the bottom.
+* Header stays at the top and Footer stays at the bottom.
 * All text has a readable size.
 
 #### __Bugs Found__
 
 * A number of the flags did not render in Safari, and instead displayed the alternative text.
-  - Resolved: Changed the file format on the aformentioned flags from webp to png.
+  - __Resolved:__ Changed the file format of the aformentioned flags from webp to png.
 * The text and icon color of the game mode buttons appeared blue in Safari.
-  - Resolved: Made sure that the text color styling was applied directly to the buttons and not relying on inheritage from parent elements.
+  - __Resolved:__ Made sure that the text color styling was applied directly to the buttons and not relying on inheritage from parent elements.
 * Buttons occasionally showed the hover-coloring on touch screens.
-  - Resolved: Found a [__guide__](https://ferie.medium.com/detect-a-touch-device-with-only-css-9f8e30fa1134) that explained how to add media queries to touch devices, and set the hover-coloring on those devices to default.
-
-
+  - __Resolved:__ Found a [__guide__](https://ferie.medium.com/detect-a-touch-device-with-only-css-9f8e30fa1134) that explains how to add media queries to touch devices, and set the hover-coloring for those devices to default.
 
 ### __Accessibility__
 
 ![Accessibility](assets/images/readme_images/accessibility.png) ![contrast](assets/images/readme_images/contrast.png)
-
-__The site and the game has been tested both manually and with different web tools__
 
 * The [__Wave__](https://wave.webaim.org/) accessibility evaluation tool has been used on the finished, deployed game to look for any accessability concerns. No such errors were found.
   - The one alert in the summary is refering to the line of \<noscript> I put on the page, since most users won't be able to see that, which is as intended.
@@ -149,4 +153,14 @@ __The site and the game has been tested both manually and with different web too
 * Heading levels has not been missed or skipped.
 * All images has an alternative text.
 * External links has __aria labels__ and opens in a new tab.
-* The game controls has been tested and works with mouse, with keyboard and with touch screen.
+
+### __Lighthouse Testing__
+
+> The lighthouse performance tests were done by [__Lighthouse Metrics__](https://lighthouse-metrics.com/)
+
+![Lighthouse](assets/images/readme_images/lighthouse.png)
+![Lighthouse audits](assets/images/readme_images/lighthouse-audits.png)
+
+### __Gameplay Testing__
+
+* The game controls has been tested and works as intended with mouse, with keyboard and with touch screen.
