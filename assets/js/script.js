@@ -819,7 +819,7 @@ function resetGame() {
  * Ends the game and displays the results
  */
 function endGame() {
-    document.getElementsByClassName('options-area')[0].innerHTML = `<a href="index.html" id="play-again"><button class="btn">PLAY AGAIN</button></a>`;
+    document.getElementsByClassName('options-area')[0].innerHTML = `<a href="index.html" id="play-again" aria-label="Restart the game"><button class="btn">PLAY AGAIN</button></a>`;
     document.getElementsByClassName('options-area')[0].classList.remove('button-background', 'red', 'green');
     document.getElementById('answer').textContent = "";
 
