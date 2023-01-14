@@ -173,6 +173,8 @@ __In both game modes the game runs for 15 rounds.__
 > * __HTML__ was tested by the [__W3C Validator__](https://validator.w3.org/).
 >   - No issues were found
 
+![HTML Validation](assets/images/readme_images/html-validator.png)
+
 > * __CSS__ was tested by the [__W3C Jigsaw Validator__](https://jigsaw.w3.org/).
 >   - No issues were found
 
@@ -189,12 +191,14 @@ __In both game modes the game runs for 15 rounds.__
 The game was continuously tested by me during the entire coding process as the commits got pushed to __GitHub__.  
 After every major step I also sent the game out to family and gamer friends for testing and opinions on design and gameplay.
 
-#### __Bugs found and dealt with during the testing process:__
+#### __Bugs found and dealt with during the testing process__
 
-* The game moved on to the next question immediately after submitted answer, not giving the player the time to see if they were right or wrong.
+* The game moved on to the next question immediately after player submitted an answer, not giving time to see what the correct anser was.
   - __Resolved:__ Added a timer between game rounds to pace the game. (Learned from [__W3 Schools__](https://www.w3schools.com/))
 * The event listeners wasn't removed from the option buttons as intended after submitted answer, making it possible to answer the same question several times before the game moved on to the next question.
   - __Resolved:__ Instead of trying to target specific listeners I decided to use the clone node method to simply remove all listeners from the option buttons.
+* There are only so many countries in Europe and it wasn't unusual for the same question to be asked twice in a row.
+  - __Resolved:__ I created an array that will follow along during the game session and collect and store the number of the current question. When the question number is selected it gets compared to the array of used questions and is only displayed to the player if not used before. The array empties when the game is reset.
 
 #### __Final Testing Results__
 
@@ -204,11 +208,21 @@ After every major step I also sent the game out to family and gamer friends for 
 * All countries are matched up with the correct flag, capitol, city image and the "wrong" options for the Capitols game.
 * All randomisers works as intended.
 * The same question / country will not appear twice during the same game session.
-* The Statistics bar increments the score and the game rounds played as intended, and correctly calculates the win %.
+* The Statistics bar increments the score and the game rounds, as intended, and correctly calculates the win %.
 * The game play has a nice comfortable pacing and feels neither stressed or too slow.
 * The Result screen chooses the correct message depending on the player's score.
 * Changing window tabs / tabbing out of the browser will not affect the game.
 * Reloading the page resets the game, which is expected.
 
-* __The finished game has been stress tested and critiqued by an 8 year old with a passion for geography.__
-  - The boy reluctantly admitted that the game works flawlessly every game round (as did his score).
+> * __The finished game has been stress tested and critiqued by an 8 year old with a passion for geography.__
+>   - The boy reluctantly admitted that the game works flawlessly every game round (as did his score).
+
+---
+
+## __Credits__
+
+* All images of flags and cities has been aquired from [__Wikipedia__](https://wikipedia.org/)
+* The image used for the favicon is a generic clipart picture, found on [__Google__](https://google.com/)
+* This repository has been based on the Code Institute [__full template__](https://github.com/Code-Institute-Org/gitpod-full-template)
+* All other help and tutorials I used has already been credited in this readme where the feature was implemented.
+* The code was written by me, Madeleine Vikner.
