@@ -97,6 +97,13 @@ __In both game modes the game runs for 15 rounds.__
 * After all 15 rounds has been played the player is presented with their results
 * A button brings the player back to the very first page, so they can start over.
 
+### __Features yet to be implemented__
+
+* __404 Page__ 
+  - Since the game only consists of one page, and all links and buttons has been thouroughly tested I decided to not make a custom 404 error page.
+* __Expansion__
+  - It wouldn't take much to make a series of games covering the other continents, such as Knowing Asia and Knowing Africa.
+
 ---
 
 ## __Design, Technologies & Deployment__
@@ -115,10 +122,10 @@ __In both game modes the game runs for 15 rounds.__
 
 ### __Responsiveness & Visual Glitches__
 
-> Screenshot from iPhone XR
+> Screenshot from iPhone XR  
 ![iPhone](assets/images/readme_images/iphone.png) 
 
-> Screenshot from iPad Air Pro
+> Screenshot from iPad Air Pro  
 ![iPad](assets/images/readme_images/ipad.png)
 
 * The page has been tested to ensure that it looks as intended on screen sizes from 320px width and up.
@@ -161,6 +168,47 @@ __In both game modes the game runs for 15 rounds.__
 ![Lighthouse](assets/images/readme_images/lighthouse.png)
 ![Lighthouse audits](assets/images/readme_images/lighthouse-audits.png)
 
+### __Validator Testing__
+
+> * __HTML__ was tested by the [__W3C Validator__](https://validator.w3.org/).
+>   - No issues were found
+
+> * __CSS__ was tested by the [__W3C Jigsaw Validator__](https://jigsaw.w3.org/).
+>   - No issues were found
+
+![CSS Validation](assets/images/readme_images/css-validator.png)
+
+> * __JavaScript__ was tested by [__JS Hint__](https://jshint.com/).
+>   - No errors were found.
+>   - All 67 warnings are purely related to syntax choice.
+
+![JS Hint](assets/images/readme_images/js-hint.png)
+
 ### __Gameplay Testing__
 
+The game was continuously tested by me during the entire coding process as the commits got pushed to __GitHub__.  
+After every major step I also sent the game out to family and gamer friends for testing and opinions on design and gameplay.
+
+#### __Bugs found and dealt with during the testing process:__
+
+* The game moved on to the next question immediately after submitted answer, not giving the player the time to see if they were right or wrong.
+  - __Resolved:__ Added a timer between game rounds to pace the game. (Learned from [__W3 Schools__](https://www.w3schools.com/))
+* The event listeners wasn't removed from the option buttons as intended after submitted answer, making it possible to answer the same question several times before the game moved on to the next question.
+  - __Resolved:__ Instead of trying to target specific listeners I decided to use the clone node method to simply remove all listeners from the option buttons.
+
+#### __Final Testing Results__
+
 * The game controls has been tested and works as intended with mouse, with keyboard and with touch screen.
+* All buttons goes where intended and has the correct text content.
+* Double clicking / spam clicking the option buttons will not affect the gameplay in any way.
+* All countries are matched up with the correct flag, capitol, city image and the "wrong" options for the Capitols game.
+* All randomisers works as intended.
+* The same question / country will not appear twice during the same game session.
+* The Statistics bar increments the score and the game rounds played as intended, and correctly calculates the win %.
+* The game play has a nice comfortable pacing and feels neither stressed or too slow.
+* The Result screen chooses the correct message depending on the player's score.
+* Changing window tabs / tabbing out of the browser will not affect the game.
+* Reloading the page resets the game, which is expected.
+
+* __The finished game has been stress tested and critiqued by an 8 year old with a passion for geography.__
+  - The boy reluctantly admitted that the game works flawlessly every game round (as did his score).
