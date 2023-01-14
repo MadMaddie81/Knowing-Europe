@@ -656,10 +656,6 @@ function runCapitols(usedNumbers) {
     let optionPlacing = Math.floor(Math.random() * 3);
     options.splice(optionPlacing, 0, capitol);
 
-    let op1 = options[0];
-    let op2 = options[1];
-    let op3 = options[2];
-
     //Displays the question, a picture of the capitol and the options
     document.getElementById('question').innerHTML = `What is the capitol of ${country.country}?`;
     document.getElementById('picture').innerHTML = country.photo;

@@ -105,9 +105,48 @@ __In both game modes the game runs for 15 rounds.__
   - The DOM, the styling and the script are all in separate files.
 * The site is hosted by __GitHub__ and was deployed to __GitHub Pages__ using the main branch.
 * The favicon was created using [__favicon.io__](https://favicon.io/).
-* The gamemode icons were imported from [__Font Awesome__](https://fontawesome.com/).
+* The game mode icons were imported from [__Font Awesome__](https://fontawesome.com/).
 
 ---
 
-## __Accessibility__
+## __Testing__
 
+### __Responsiveness & Visual Glitches__
+
+* The page has been tested to ensure that it looks as intended on screen sizes from 320px width and up.
+* The responsiveness tests were done using:
+  - Chrome developer tools
+  - Edge
+  - Safari, iPhone XR
+  - Safari, iPad Air
+* No images or fonts has been stretched or in other ways warped.
+* No elements overlap.
+* No horizontal scrolling appear.
+* Header stays at the top and footer stays at the bottom.
+* All text has a readable size.
+
+#### __Bugs Found__
+
+* A number of the flags did not render in Safari, and instead displayed the alternative text.
+  - Resolved: Changed the file format on the aformentioned flags from webp to png.
+* The text and icon color of the game mode buttons appeared blue in Safari.
+  - Resolved: Made sure that the text color styling was applied directly to the buttons and not relying on inheritage from parent elements.
+* Buttons occasionally showed the hover-coloring on touch screens.
+  - Resolved: Found a [__guide__](https://ferie.medium.com/detect-a-touch-device-with-only-css-9f8e30fa1134) that explained how to add media queries to touch devices, and set the hover-coloring on those devices to default.
+
+
+
+### __Accessibility__
+
+![Accessibility](assets/images/readme_images/accessibility.png) ![contrast](assets/images/readme_images/contrast.png)
+
+__The site and the game has been tested both manually and with different web tools__
+
+* The [__Wave__](https://wave.webaim.org/) accessibility evaluation tool has been used on the finished, deployed game to look for any accessability concerns. No such errors were found.
+  - The one alert in the summary is refering to the line of \<noscript> I put on the page, since most users won't be able to see that, which is as intended.
+  ![Noscript](assets/images/readme_images/noscript.png)
+* No contrast issues were found.
+* Heading levels has not been missed or skipped.
+* All images has an alternative text.
+* External links has __aria labels__ and opens in a new tab.
+* The game controls has been tested and works with mouse, with keyboard and with touch screen.
