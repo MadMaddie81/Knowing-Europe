@@ -56,15 +56,15 @@ When the player has picked a game mode the are presented with a short descriptio
 * A bar with three option buttons has now appeared.
   - One of the buttons has the name of the correct answer.
   - The content of the other two buttons has been randomly generated from an array.
-  - The order of the options are also randomly generated.
+  - The order of the option buttons are also randomly generated.
 
 ![correct](assets/images/readme_images/correct.png)
 
-* If the player picks the right answer the bar behind the option buttons turns green and a message tells the player that they were indeed correct.
+* If the player picks the correct answer, the bar behind the option buttons turns green and a message tells the player that they were indeed correct.
 
 ![wrong](assets/images/readme_images/wrong.png)
 
-* If the user player incorrectly the bar turns red and the correct answer is displayed below.
+* If the player chooses incorrectly the bar turns red and the correct answer is displayed below.
 
 ### __The Capitols Game__
 
@@ -73,7 +73,7 @@ When the player has picked a game mode the are presented with a short descriptio
 * This game mode is very simmilar to the Flags game.
 * Here the player is asked the question "What is the capitol of (_country name_)?"
 * A lovely picture of the city in question is presented instead of a flag.
-* The options in this game mode has not been randomly generated. 
+* The incorrect options in this game mode has not been randomly generated. 
   - Instead they have been individually selected for each question, and can be the names of big cities in the same country, the capitols of neighbouring countries, or the name could just have been made up by me.
 * The order of the option buttons are still randomised.
 * The answering system works the same way as in the Flag game.
@@ -100,7 +100,7 @@ __In both game modes the game runs for 15 rounds.__
 ### __Features yet to be implemented__
 
 * __404 Page__ 
-  - Since the game only consists of one page, and all links and buttons has been thouroughly tested I decided to not make a custom 404 error page.
+  - Since the game only consists of one page and all links and buttons has been thouroughly tested, I decided not to make a custom 404 error page.
 * __Expansion__
   - It wouldn't take much to make a series of games covering the other continents, such as Knowing Asia and Knowing Africa.
 
@@ -110,7 +110,7 @@ __In both game modes the game runs for 15 rounds.__
 
 * The game was designed and written in __GitPod__, using __HTML__, __CSS__ and __JavaScript__
   - The DOM, the styling and the script are all in separate files.
-* The site is hosted by __GitHub__ and was deployed to __GitHub Pages__ using the main branch.
+* The site is hosted by [__GitHub__](https://github.com/) and was deployed to __GitHub Pages__ using the main branch.
 * The favicon was created using [__favicon.io__](https://favicon.io/).
 * The game mode icons were imported from [__Font Awesome__](https://fontawesome.com/).
 
@@ -133,12 +133,12 @@ __In both game modes the game runs for 15 rounds.__
   - Chrome developer tools
   - Edge
   - Safari, iPhone XR
-  - Safari, iPad Air Pros
+  - Safari, iPad Air Pro
 * No images or fonts has been stretched or in other ways warped.
 * No elements overlap.
 * No horizontal scrolling appear.
 * Header stays at the top and Footer stays at the bottom.
-* All text has a readable size.
+* All text has a readable font size.
 
 #### __Bugs Found__
 
@@ -146,8 +146,8 @@ __In both game modes the game runs for 15 rounds.__
   - __Resolved:__ Changed the file format of the aformentioned flags from webp to png.
 * The text and icon color of the game mode buttons appeared blue in Safari.
   - __Resolved:__ Made sure that the text color styling was applied directly to the buttons and not relying on inheritage from parent elements.
-* Buttons occasionally showed the hover-coloring on touch screens.
-  - __Resolved:__ Found a [__guide__](https://ferie.medium.com/detect-a-touch-device-with-only-css-9f8e30fa1134) that explains how to add media queries to touch devices, and set the hover-coloring for those devices to default.
+* Buttons occasionally appeared with the hover-styling on touch screens.
+  - __Resolved:__ Found a [__guide__](https://ferie.medium.com/detect-a-touch-device-with-only-css-9f8e30fa1134) that explains how to add media queries for touch devices, and set the hover-styling for those devices to default.
 
 ### __Accessibility__
 
@@ -159,6 +159,7 @@ __In both game modes the game runs for 15 rounds.__
 * No contrast issues were found.
 * Heading levels has not been missed or skipped.
 * All images has an alternative text.
+* All fonts has been kept simple and easy to read.
 * External links has __aria labels__ and opens in a new tab.
 
 ### __Lighthouse Testing__
@@ -188,19 +189,19 @@ __In both game modes the game runs for 15 rounds.__
 
 ### __Gameplay Testing__
 
-The game was continuously tested by me during the entire coding process as the commits got pushed to __GitHub__.  
-After every major step I also sent the game out to family and gamer friends for testing and opinions on design and gameplay.
+The game was continuously tested by me during the entire coding process as the commits got pushed to GitHub.  
+After every major step I also sent the game out to family and "gamer" friends for testing and opinions.
 
-#### __Bugs found and dealt with during the testing process__
+#### __Bugs found and dealt with during the testing process:__
 
 * The game moved on to the next question immediately after player submitted an answer, not giving time to see what the correct anser was.
   - __Resolved:__ Added a timer between game rounds to pace the game. (Learned from [__W3 Schools__](https://www.w3schools.com/))
-* The event listeners wasn't removed from the option buttons as intended after submitted answer, making it possible to answer the same question several times before the game moved on to the next question.
+* The event listeners didn't get removed from the option buttons as intended after submitted answer, making it possible to answer the same question several times before the game moved on to the next question.
   - __Resolved:__ Instead of trying to target specific listeners I decided to use the clone node method to simply remove all listeners from the option buttons.
 * There are only so many countries in Europe and it wasn't unusual for the same question to be asked twice in a row.
   - __Resolved:__ I created an array that will follow along during the game session and collect and store the number of the current question. When the question number is selected it gets compared to the array of used questions and is only displayed to the player if not used before. The array empties when the game is reset.
 
-#### __Final Testing Results__
+#### __Final Testing Results:__
 
 * The game controls has been tested and works as intended with mouse, with keyboard and with touch screen.
 * All buttons goes where intended and has the correct text content.
